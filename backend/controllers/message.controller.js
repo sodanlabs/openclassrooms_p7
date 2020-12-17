@@ -8,9 +8,15 @@ const Comment = db.comments;
 // Retrieve all Messages from the database
 exports.getAllMessages = (req, res, next) => {
     Message.findAll({
-        attributes: ['title', 'description', 'attachment']
+        attributes: ['id', 'userId', 'title', 'description', 'attachment']
     })
-        .then(message => { res.status(200).json(message); })
+        .then(message => {
+            if (message.length != 0) {
+                return res.status(200).json(message);
+            } else {
+                return res.status(400).json({ error: 'message does not exist' });
+            }
+        })
         .catch(error => res.status(400).json({ error: 'messages are not exist' }));
 };
 
@@ -43,7 +49,7 @@ exports.createMessage = (req, res, next) => {
 exports.getOneMessage = (req, res, next) => {
     Message.findOne({
         where: { id: `${req.params.id}` },
-        attributes: ['title', 'description', 'attachment']
+        attributes: ['id', 'userId', 'title', 'description', 'attachment']
     })
         .then(message => {
             if (message == null) {
