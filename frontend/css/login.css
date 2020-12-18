@@ -1,0 +1,48 @@
+input:not(:placeholder-shown):not(:focus):invalid {
+    border: #b20a37 solid 2px;
+    background-color: #b20a37;
+    animation: wiggle 150ms;
+    animation-timing-function: linear;
+    color: white;
+}
+
+a {
+    color: #004744;
+}
+
+#titleForm {
+    color: #004744;
+}
+
+input:focus {
+    border: #8f5bfe solid 2px;  
+}
+
+input:placeholder {
+    color: grey;
+}
+
+input:valid {
+    border: green solid 1px;
+    background-color: lightgreen;
+}
+
+#userCardContent {
+    text-align: left;
+}
+
+#userCardContent span {
+    font-weight: bold;
+}
+
+@keyframes wiggle {
+    0% {
+      transform: translate(1px, 0);
+    }
+    50% {
+      transform: translate(-1px, 0);
+    }
+    100% {
+      transform: translate(1px, 0);
+    }
+  }

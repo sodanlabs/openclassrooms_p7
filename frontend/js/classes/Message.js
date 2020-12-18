@@ -1,5 +1,4 @@
 "use strict";
-
 class Messages {
     constructor(id, userId, title, description, attachment) {
         this.id = id;

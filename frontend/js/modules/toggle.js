@@ -1,5 +1,6 @@
 "use strict"
 
+// Cacher le container principal et afficher un message
 function displayMessage(texte) {
     const elementBody = document.body;
     const messageBox = document.createElement('div');
@@ -7,7 +8,7 @@ function displayMessage(texte) {
     
     const messageHeader = document.createElement('div');
     messageHeader.classList.add("header");
-    messageHeader.textContent = "Message de service ❗";
+    messageHeader.textContent = "❗ Message de service ❗";
 
     const pContent = document.createElement('p');
     const textContent = document.createTextNode(texte);
@@ -21,12 +22,25 @@ function displayMessage(texte) {
     invisibleContainer.classList.toggle('invisible');
 }
 
+// Afficher ou cacher la barre de menu
 function toggleHeaderButton() {
-    const login = document.getElementById("login");
-    const signup = document.getElementById("signup");
     const disconnect = document.getElementById("disconnect");
 
-    login.classList.toggle('invisible');
-    signup.classList.toggle('invisible');
     disconnect.classList.toggle('invisible');
+}
+
+// Afficher ou cacher la carte utilisateur
+function toggleAccountPage() {
+    const isNotLoggedIn = document.getElementById("isNotLoggedIn");
+    const isLoggedIn = document.getElementById("isLoggedIn");
+
+    isNotLoggedIn.classList.toggle('invisible');
+    isLoggedIn.classList.toggle('invisible');
+}
+
+// Afficher ou cacher la page Signup
+function toggleSignupPage() {
+    const isLoggedIn = document.getElementById("isLoggedIn");
+
+    isLoggedIn.classList.toggle('invisible');
 }

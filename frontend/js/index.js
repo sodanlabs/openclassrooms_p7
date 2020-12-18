@@ -11,10 +11,6 @@ async function getAllMessages() {
             }
         });
         if (response.ok) {
-            // const messagesList = await response.json();
-            // localStorage.setItem('messagesList', JSON.stringify(messagesList));
-            // console.log("messagesList :", messagesList);
-
             const messagesList = await response.json();
 
             localStorage.setItem('messagesList', JSON.stringify(messagesList));
@@ -26,10 +22,10 @@ async function getAllMessages() {
             });
         } else {
             console.error('Response Erreur : ', response.status);
+            displayMessage("Mais il y a encore aucun message sur le site, faîtes marcher votre imagination !")
         }
     } catch (error) {
         console.error('Catch Erreur : ', error);
-        // displayMessage("Une erreur sur le serveur est survenue, veuillez réessayer plus tard");
     }
 }
 
@@ -38,7 +34,6 @@ async function getAllMessages() {
 if (isLogged()) {
     getAllMessages();
 } else {
-    displayMessage("Vous n'êtes pas autorisé à aller plus loin, veuillez vous authetifier. Merci");
+    alert("Vous n'êtes pas autorisé à aller plus loin, veuillez vous authentifier. Merci");
+    window.location.href = "../pages/account.html";
 }
-
-

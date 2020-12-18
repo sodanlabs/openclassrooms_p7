@@ -39,7 +39,7 @@ if (isLogged()) {
         displayMessage("On ne connait pas ce message, attendez encore un peu, il arriva peut-être... 😁");
     } else {
         getMessage();
-    }   
+    }
 } else {
     displayMessage("Vous n'êtes pas autorisé à aller plus loin, veuillez vous authetifier. Merci");
 }

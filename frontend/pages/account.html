@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <title>Groupomania</title>
+    <meta name="description" content="Groupomania" />
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary" />
+    <meta property="twitter:description" content="Groupomania" />
+    <meta name="twitter:url" content="https://sodanlabs.github.io/openclassrooms_p7/" />
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Groupomania" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sodanlabs.github.io/openclassrooms_p7/" />
+    <meta property="og:description" content="Groupomania" />
+
+    <!-- Fomantic UI - / You MUST include jQuery before CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.js" defer></script>
+
+    <link rel="shortcut icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../css/login.css">
+    <link rel="stylesheet" type="text/css" href="../css/stylesheet.css">
+
+    <script src="../js/modules/toggle.js" defer></script>
+    <script src="../js/modules/auth.js" defer></script>
+    <script src="../js/account.js" defer></script>
+</head>
+
+<body>
+    <header class="header">
+        <div>
+            <a href="../index.html" class="header_button"><img src="../images/icon-left-font-monochrome-black.svg
+            " alt="Logo de Groupomania" class="header_logo_img"></a>
+        </div>
+
+        <div>
+            <button class="ui fade animated negative button header_button invisible" id="disconnect">
+                <span class="visible content"><i class="power off icon"></i></span>
+                <span class="hidden content">Quit</span>
+            </button>
+        </div>
+    </header>
+    <main id="container">
+        <div id="isNotLoggedIn" class="ui middle aligned center aligned grille">
+            <div class="center aligned column">
+                <h1 class="ui image header">
+                    <img src="../images/icon.png" alt="Logo Groupomania sans habillage" class="ui medium image">
+                    <span id="titleForm" class="content">Connexion à votre compte</span>
+                </h1>
+                <div>
+                    <form id="loginForm" class="ui large form">
+                        <div class="ui stacked segment">
+                            <div class="field">
+                                <div class="ui left icon input">
+                                    <i class="envelope icon"></i>
+                                    <label for="email" class="invisible">Adresse E-mail</label>
+                                    <input id="email" type="email" name="email" placeholder="Adresse e-mail" pattern="^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$" required/>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <div class="ui left icon input">
+                                    <i class="lock icon"></i>
+                                    <label for="password" class="invisible">Mot de passe</label>
+                                    <input id="password" type="password" name="password" placeholder="Mot de passe" required/>
+                                </div>
+                            </div>
+
+                            <button id="login_button" name="login_button" type="submit" class="ui labeled icon button">
+                                <i class="right sign in icon"></i>
+                                Se connecter
+                            </button>
+                        </div>
+                    </form>
+                    <div class="ui message">
+                        Pas encore inscrit ?
+                        <a href="signup.html">Signup</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="isLoggedIn" class="ui grille invisible">
+            <div id="userCard" class="ui cards">
+                <div class="card">
+                    <div class="content">
+                        <div id="userCardUserName" class="header">UserName</div>
+                    </div>
+                  <div class="content">
+                    <div id="userCardContent" class="description">
+                      <p id="userCardId">UserId</p>
+                      <p id="userCardToken">UserToken</p>
+                    </div>
+                  </div>
+                  <div class="ui bottom attached red animated button" id="delete_button">
+                      <span class="hidden content"><i class="trash alternate icon"></i></span>
+                      <span class="visible content">Supprimer le compte</span>
+                  </div>
+                </div>
+        </div>
+    </main>
+</body>
+</html>

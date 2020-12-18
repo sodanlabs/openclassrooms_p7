@@ -1,18 +1,27 @@
 "use strict"
 
+// Vérifie le token utilisateur est présent et cache le header en conséquence
 function isLogged() {
-    // const auth = JSON.parse(localStorage.getItem('Auth'));
-    const auth = true;
+    const auth = JSON.parse(localStorage.getItem('Auth'));
     if (!auth) {
         return false;
     } else {
         toggleHeaderButton();
-        
-        const authentification = {
-            "userId": 1,
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MDgyMjE0NjEsImV4cCI6MTYwODMwNzg2MX0.omfLCeE-XGUZUN10B_dLaUdtB-OQ70pPdlQ_2TbxeOc"
-        };
-        localStorage.setItem('Auth', JSON.stringify(authentification));
         return true;
     }
 }
+
+// Supprimer le token utilisateur et renvoi sur la page de connexion
+function disconnectUser() {
+    alert("Vous venez de vous déconnecter, au revoir");
+    localStorage.removeItem("Auth");
+    window.location.href = "../../pages/account.html";
+}
+
+/*****************************************************************************/
+
+const disconnectButton = document.getElementById('disconnect');
+disconnectButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    disconnectUser();
+});

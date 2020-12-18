@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 
     <title>Groupomania</title>
     <meta name="description" content="Groupomania" />
@@ -10,60 +10,75 @@
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="summary" />
     <meta property="twitter:description" content="Groupomania" />
-    <meta name="twitter:url" content="https://sodanlabs.github.io/openclassrooms_p7/" />
+    <meta
+      name="twitter:url"
+      content="https://sodanlabs.github.io/openclassrooms_p7/"
+    />
 
-   <!-- Open Graph data -->
-   <meta property="og:title" content="Groupomania" />
-   <meta property="og:type" content="website" />
-   <meta property="og:url" content="https://sodanlabs.github.io/openclassrooms_p7/" />
-   <meta property="og:description" content="Groupomania" />
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Groupomania" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://sodanlabs.github.io/openclassrooms_p7/"
+    />
+    <meta property="og:description" content="Groupomania" />
 
-   
+    <!-- Fomantic UI - / You MUST include jQuery before CSS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"
+      defer
+    ></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.css"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.js"
+      defer
+    ></script>
 
-<!-- Fomantic UI - / You MUST include jQuery before CSS -->
-<script src = "https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script>
-<link   rel = "stylesheet" type = "text/css" href = "https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.css">
-<script src = "https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.js" defer></script>
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
 
-
-
-    <link rel = "shortcut icon" type = "image/x-icon" href = "images/favicon.ico">
-    <link rel = "stylesheet" type    = "text/css" href     = "css/stylesheet.css">
-    
-    <script src = "js/modules/toggle.js" defer></script>
-    <script src = "js/modules/auth.js" defer></script>
-    <script src = "js/classes/Message.js" defer></script>
-    <script src = "js/index.js" defer></script>
-</head>
-<body>
+    <script src="js/modules/toggle.js" defer></script>
+    <script src="js/modules/auth.js" defer></script>
+    <script src="js/classes/Message.js" defer></script>
+    <script src="js/index.js" defer></script>
+  </head>
+  <body>
     <header class="header">
-        <div>
-            <a href="index.html" class="header_button"><img src="images\icon-left-font-monochrome-black.svg
-            " alt="Logo de Groupomania" class="header_logo_img"></a>
-        </div>
+      <div>
+        <a href="index.html" class="header_button"
+          ><img
+            src="images/icon-left-font-monochrome-black.svg
+            "
+            alt="Logo de Groupomania"
+            class="header_logo_img"
+        /></a>
+      </div>
 
-        <div>
-            <a href="pages/login.html" role="button" id="login" class="ui fade animated button header_button">
-                <div class="visible content"><i class="user icon"></i></div>
-                <div class="hidden content">Login</div>
-            </a>
+      <div>
+        <a
+          href="pages/account.html"
+          role="button"
+          id="account"
+          class="ui fade animated button header_button"
+        >
+          <div class="visible content"><i class="user icon"></i></div>
+          <div class="hidden content">Compte</div>
+        </a>
 
-            <a href="pages/signup.html" role="button" id="signup" class="ui fade animated button active header_button">
-                <div class="visible content"><i class="paper plane icon"></i></div>
-                <div class="hidden content">Signup</div>
-            </a>
-
-            <button class="ui fade animated negative button header_button invisible" id="disconnect">
-                <div class="visible content"><i class="power off icon"></i></div>
-                <div class="hidden content">Disconnect</div>  
-            </button>
-            </div>
-        </div>
+        <button
+          class="ui fade animated negative button header_button invisible"
+          id="disconnect"
+        >
+          <span class="visible content"><i class="power off icon"></i></span>
+          <span class="hidden content">Quit</span>
+        </button>
+      </div>
     </header>
-    <main id="container" class='mainContainer'>
-    </main>
-    <!-- <footer class="footer">
-        <a href="mailto:contact@groupomania.tld">Contactez-nous</a>
-    </footer> -->
-</body>
+    <main id="container" class="mainContainer"></main>
+  </body>
 </html>
