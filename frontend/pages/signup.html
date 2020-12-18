@@ -101,7 +101,7 @@
                         name="password"
                         placeholder="Nom d'utilisateur"
                         title="Le nom d'utilisateur doit faire entre 5 et 12 caractères"
-                        pattern="[a-zA-Z]{5,12}"
+                        pattern="[a-zA-Z0-9]{5,12}"
                         required
                       />
                     </div>
@@ -136,16 +136,21 @@
                     />
                   </div>
                 </div>
-
-                <button
-                  id="signup_button"
-                  name="signup_button"
-                  type="submit"
-                  class="ui labeled icon button"
-                >
-                  <i class="left save icon"></i>
-                  S'enregistrer
-                </button>
+                <div>
+                  <button
+                    id="signup_button"
+                    name="signup_button"
+                    type="submit"
+                    class="ui labeled icon button"
+                  >
+                    <i class="left save icon"></i>
+                    S'enregistrer
+                  </button>
+                  <div class="ui toggle checkbox">
+                    <input type="checkbox" id="isAdmin" name="isAdmin">
+                    <label>Admin</label>
+                  </div>
+                </div>
               </div>
             </form>
             <div class="ui message">

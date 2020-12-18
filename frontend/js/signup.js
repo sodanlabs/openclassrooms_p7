@@ -11,9 +11,6 @@ async function submitSignup(signupToSubmit) {
             body: JSON.stringify(signupToSubmit)
         });
         if (response.ok) {
-            const authentification = await response.json();
-
-            localStorage.setItem('Auth', JSON.stringify(authentification));
             alert("Vous avez été enregisré, nous vous redirigons vers la page de connexion");
             window.location.href = "../pages/account.html";
 
@@ -34,12 +31,14 @@ function checkDataToSignUp() {
     const username = document.getElementById('username').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
+    const isAdmin = document.getElementById('isAdmin').checked;
 
     if (document.getElementById("signupForm").checkValidity()) {
         const signupToSubmit = {
             username: username,
             email: email,
-            password: password
+            password: password,
+            isAdmin: isAdmin
         }
         submitSignup(signupToSubmit);
     } else {
