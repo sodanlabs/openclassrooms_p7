@@ -95,11 +95,12 @@ exports.login = (req, res, next) => {
                             return res.status(401).json({ error: 'invalid password' });
                         } else {
                             return res.status(200).json({
-                                userId: userFound.id,
-                                token : jwt.sign(
+                                userId  : userFound.id,
+                                username: userFound.username,
+                                token   : jwt.sign(
                                     {
-                                        userId : userFound.id,
-                                        isAdmin: userFound.isAdmin
+                                        userId  : userFound.id,
+                                        isAdmin : userFound.isAdmin
                                     },
                                     process.env.JWT_SIGN_SECRET,
                                     { expiresIn: '24h' }
