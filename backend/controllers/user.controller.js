@@ -130,6 +130,7 @@ exports.deleteAccount = (req, res, next) => {
 };
 */
 
+// Delete account by making it anonymous
 exports.deleteAccount = (req, res, next) => {
     User.findByPk(res.locals.userId)
     .then(userFound => {
