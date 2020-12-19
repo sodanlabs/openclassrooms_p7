@@ -32,6 +32,10 @@ body {
     padding-right: 20px;
 }
 
+#containerItem {
+    margin: 50px;
+}
+
 .grille {
     display: grid;
     place-items: center;
@@ -39,7 +43,7 @@ body {
 }
 
 
-.card {
+._card {
     margin: 5px;
     border: solid black 1px;
     border-radius: 20px;

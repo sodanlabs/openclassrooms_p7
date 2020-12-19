@@ -79,6 +79,28 @@
         </button>
       </div>
     </header>
-    <main id="container" class="mainContainer"></main>
+    <main id="container" class="mainContainer">
+        <div id="containerItem" class="ui items"></div>
+    </main>
+    <div id="modale">
+        <form id="messageForm" class="ui form">
+            <div class="field">
+              <label for="title">Title du message</label>
+              <input type="text" id="title" name="TitleMessage" placeholder="Titre du message" title="Le titre doit faire minimum 3 caractères" pattern="[a-zA-Z0-9]{3,}" required>
+            </div>
+            <div class="field">
+              <label for="description">Description</label>
+              <textarea type="text" rows="2" id="description" name="DescriptionMessage" placeholder="Votre message ici..." title="Votre message doit faire minimum 3 caractères" pattern="[a-zA-Z0-9]{3,}" required></textarea>
+            </div>
+            <div class="field">
+                <label for="attachment">Ajouter une image</label>
+                <input type="file" id="attachment" name="AttachmentMessage" accept="image/png, image/jpeg">
+              </div>
+            <button class="ui fade animated button active" id="submitButton" type="submit">
+                <span class="hidden content"><i class="paper plane icon"></i></span>
+                <span class="visible content">Envoyer le message</span>
+            </button>
+        </form>
+    </div>
   </body>
 </html>

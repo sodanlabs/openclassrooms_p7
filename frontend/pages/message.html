@@ -38,28 +38,63 @@
 <body>
     <header class="header">
         <div>
-            <a href="../index.html" class="header_button"><img src="../images/icon-left-font-monochrome-black.svg
-            " alt="Logo de Groupomania" class="header_logo_img"></a>
+          <a href="../index.html" class="header_button"
+            ><img
+              src="../images/icon-left-font-monochrome-black.svg
+              "
+              alt="Logo de Groupomania"
+              class="header_logo_img"
+          /></a>
         </div>
-
+  
         <div>
-            <a href="account.html" role="button" id="account" class="ui fade animated button header_button">
-                <div class="visible content"><i class="user icon"></i></div>
-                <div class="hidden content">Compte</div>
-            </a>
-
-            <a href="signup.html" role="button" id="signup" class="ui fade animated button active header_button">
-                <div class="visible content"><i class="paper plane icon"></i></div>
-                <div class="hidden content">Signup</div>
-            </a>
-
-            <button class="ui fade animated negative button header_button invisible" id="disconnect">
-                <span class="visible content"><i class="power off icon"></i></span>
-                <span class="hidden content">Quit</span>
-            </button>
-            </div>
-    </header>
+          <a
+            href="account.html"
+            role="button"
+            id="account"
+            class="ui fade animated button header_button"
+          >
+            <div class="visible content"><i class="user icon"></i></div>
+            <div class="hidden content">Compte</div>
+          </a>
+  
+          <button
+            class="ui fade animated negative button header_button invisible"
+            id="disconnect"
+          >
+            <span class="visible content"><i class="power off icon"></i></span>
+            <span class="hidden content">Quit</span>
+          </button>
+        </div>
+      </header>
     <main id="container" class='mainContainer'>
+        <div id="modale" class="invisible">
+            <form id="messageForm" class="ui form">
+                <div class="field">
+                  <label for="title">Title du message</label>
+                  <input type="text" id="title" name="TitleMessage" placeholder="Titre du message" title="Le titre doit faire minimum 3 caractères" pattern="[a-zA-Z0-9]{3,}">
+                </div>
+                <div class="field">
+                  <label for="description">Description</label>
+                  <textarea type="text" rows="2" id="description" name="DescriptionMessage" placeholder="Votre message ici..." title="Votre message doit faire minimum 3 caractères" pattern="[a-zA-Z0-9]{3,}"></textarea>
+                </div>
+                <div class="field">
+                    <label for="attachment">Ajouter une image</label>
+                    <input type="file" id="attachment" name="AttachmentMessage" accept="image/png, image/jpeg">
+                  </div>
+                <div>
+                <button class="ui fade animated button active" id="modifyMessage" type="submit">
+                    <span class="hidden content"><i class="paper plane icon"></i></span>
+                    <span class="visible content">Modifier le message</span>
+                </button>
+                <button class="ui bottom attached red animated button" id="deleteMessage">
+                <span class="hidden content"><i class="trash alternate icon"></i></span>
+                <span class="visible content">Supprimer le message</span>
+                </button>
+            </div>
+            </form>
+
+        </div>
     </main>
 </body>
 </html>
