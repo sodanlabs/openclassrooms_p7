@@ -1,12 +1,8 @@
-const dotenv = require('dotenv').config();
-
-// IMPORT CONFIG FROM DOTENV ?
-
 module.exports = {
   HOST    : "localhost",
-  USER    : "developer",
-  PASSWORD: "password",
-  DB      : "groupomania_dev",
+  USER    : "fydrich_developer",
+  PASSWORD: "Password123#@!",
+  DB      : "fydrich_groupomania",
   dialect : "mysql",
   pool    : {
     max    : 5,
