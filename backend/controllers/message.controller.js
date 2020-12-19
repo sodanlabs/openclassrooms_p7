@@ -68,6 +68,13 @@ exports.modifyMessage = (req, res, next) => {
     })
         .then(messageFound => {
             if (messageFound.userId == res.locals.userId || res.locals.isAdmin == true) {
+                if (req.file) {
+                    if (messageFound.attachment != null) {
+                        const filename = messageFound.attachment.split('/images/')[1];
+                        fs.unlink(`images/${filename}`, () => { });
+                    }
+                    req.body.attachment = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`;
+                }
                 Message.update(req.body, {
                     where: { id: `${req.params.id}` }
                 })

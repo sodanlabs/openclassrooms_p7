@@ -97,6 +97,7 @@ exports.login = (req, res, next) => {
                             return res.status(200).json({
                                 userId  : userFound.id,
                                 username: userFound.username,
+                                isAdmin : userFound.isAdmin,
                                 token   : jwt.sign(
                                     {
                                         userId  : userFound.id,
@@ -115,6 +116,7 @@ exports.login = (req, res, next) => {
 };
 
 exports.deleteAccount = (req, res, next) => {
+    console.log("Suppression du compte");
     User.findByPk(res.locals.userId)
         .then(userFound => {
             User.destroy({
