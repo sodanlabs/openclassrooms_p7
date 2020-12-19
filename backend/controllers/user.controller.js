@@ -115,8 +115,9 @@ exports.login = (req, res, next) => {
         .catch(error => res.status(500).json({ error: 'unable to verify user' }));
 };
 
+// Delete the user and its associated messages = CASCADING from Sequelize.destroy ?
+/*
 exports.deleteAccount = (req, res, next) => {
-    console.log("Suppression du compte");
     User.findByPk(res.locals.userId)
         .then(userFound => {
             User.destroy({
@@ -126,4 +127,22 @@ exports.deleteAccount = (req, res, next) => {
                 .catch(error => res.status(400).json({ error: 'cannot delete user' }));
         })
         .catch(error => res.status(400).json({ error: 'user does not exit' }));
+};
+*/
+
+exports.deleteAccount = (req, res, next) => {
+    User.findByPk(res.locals.userId)
+    .then(userFound => {
+        const anonymousUser = {
+            username: "user deleted",
+            email: "anon@ymous",
+            password: "anon@ymous"
+        }
+        User.update(anonymousUser, {
+            where: { id: `${userFound.id}` }
+        })
+            .then(() => res.status(201).json({ message: 'user deleted !' }))
+            .catch(error => res.status(400).json({ error: 'cannot delete user' }));
+    })
+    .catch(error => res.status(400).json({ error: 'user does not exit' }));
 };
