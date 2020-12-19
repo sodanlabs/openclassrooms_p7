@@ -8,7 +8,10 @@ const Comment = db.comments;
 // Retrieve all Messages from the database
 exports.getAllMessages = (req, res, next) => {
     Message.findAll({
-        attributes: ['id', 'userId', 'title', 'description', 'attachment']
+        attributes: ['id', 'userId', 'title', 'description', 'attachment'],
+        order: [
+            ['createdAt', 'DESC']
+        ]
     })
         .then(message => {
             if (message.length != 0) {
