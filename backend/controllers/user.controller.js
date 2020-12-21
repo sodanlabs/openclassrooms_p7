@@ -115,7 +115,7 @@ exports.login = (req, res, next) => {
         .catch(error => res.status(500).json({ error: 'unable to verify user' }));
 };
 
-// Delete the user and its associated messages = CASCADING from Sequelize.destroy ?
+// Delete the user and its associated messages = avoid DEFAULT CASCADING from Sequelize.destroy
 /*
 exports.deleteAccount = (req, res, next) => {
     User.findByPk(res.locals.userId)
@@ -135,9 +135,10 @@ exports.deleteAccount = (req, res, next) => {
     User.findByPk(res.locals.userId)
     .then(userFound => {
         const anonymousUser = {
-            username: "user deleted",
-            email: "anon@ymous",
-            password: "anon@ymous"
+            username: "user_deleted",
+            email: `anonymoused_${Date.now()}_${userFound.email}`,
+            password: `anonymoused_${Date.now()}`,
+            isAdmin: 0
         }
         User.update(anonymousUser, {
             where: { id: `${userFound.id}` }
