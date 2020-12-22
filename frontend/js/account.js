@@ -1,6 +1,6 @@
 "use strict"
 
-// Supprimer le compte utilisateur
+// Delete user account
 async function deleteAccount() {
     const authentification = JSON.parse(localStorage.getItem("Auth"));
     try {
@@ -22,7 +22,7 @@ async function deleteAccount() {
     }
 }
 
-// Remplir la carte utilisateur avec ses informations contenu dans le token
+// Fill user card with token auth
 function fillInUserCard() {
     const authentification = JSON.parse(localStorage.getItem("Auth"));
 
@@ -37,7 +37,7 @@ function fillInUserCard() {
     userCardToken.innerHTML = `<span>Token d'identification: </span>${authentification.token}`;
 }
 
-// Envoyer le login  au serveur
+// Submit login to get auth token
 async function submitLogin(loginToSubmit) {
     try {
         let response = await fetch('http://localhost:3000/api/auth/login', {
@@ -63,7 +63,7 @@ async function submitLogin(loginToSubmit) {
     }
 }
 
-// Vérifier que le forumlaire soit valide avant de construire l'objet à passer au serveur
+// Check the validity of the information entered in the form
 function checkData() {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;

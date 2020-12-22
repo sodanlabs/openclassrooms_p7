@@ -1,5 +1,6 @@
 "use strict"
 
+// Send the created message to the server
 async function submitMessage(messageToSend) {
     const authentification = JSON.parse(localStorage.getItem("Auth"));
     try {
@@ -11,7 +12,7 @@ async function submitMessage(messageToSend) {
             body: messageToSend
         });
         if (response.ok) {
-            console.log("Le message a bien été ajouté!");
+            closeModal(stateModalEvent);
             // Recharge la page actuelle pour faire apparaitre le message
             document.location.reload();
         } else {
@@ -22,6 +23,7 @@ async function submitMessage(messageToSend) {
     }
 }
 
+// Check the validity of the information entered in the form
 function checkDataMessageToSubmit() {
     const title = document.getElementById('title').value;
     const description = document.getElementById('description').value;
@@ -43,6 +45,7 @@ function checkDataMessageToSubmit() {
     }
 }
 
+// Get all messages existing on the server
 async function getAllMessages() {
     const authentification = JSON.parse(localStorage.getItem("Auth"));
     try {
@@ -56,12 +59,9 @@ async function getAllMessages() {
         if (response.ok) {
             const messagesList = await response.json();
 
-            localStorage.setItem('messagesList', JSON.stringify(messagesList));
-            console.log("messagesList :", messagesList);
-
             messagesList.forEach(message => {
                 const newCard = new Messages(message.id, message.userId, message.title, message.description, message.attachment);
-                newCard.appendItemMessageToContainer();
+                newCard.initMessage();
                 // newCard.appendCardMessageToContainer();
             });
         } else {
@@ -75,14 +75,25 @@ async function getAllMessages() {
 
 /*****************************************************************************/
 
+let stateModalEvent = null;
+
+// If auth then loads the messages and add events listener on the buttons
 if (isLogged()) {
     getAllMessages();
 
     const submitButton = document.getElementById('submitButton');
     submitButton.addEventListener("click", (event) => {
         event.preventDefault();
+        stateModalEvent = event;
         checkDataMessageToSubmit();
     });
+
+    const writeMessageButton = document.getElementById('writeMessageButton');
+    writeMessageButton.classList.toggle('invisible');
+    writeMessageButton.addEventListener('click', (event) => {
+    openModal(event);
+    });
+    
 } else {
     alert("Vous n'êtes pas autorisé à aller plus loin, veuillez vous authentifier. Merci");
     window.location.href = "./pages/account.html";

@@ -1,6 +1,6 @@
 "use strict"
 
-// Envoyer les informations pour enregistrer un nouvel utilisateur  au serveur
+// Send user information to the server for register
 async function submitSignup(signupToSubmit) {
     try {
         let response = await fetch('http://localhost:3000/api/auth/signup', {
@@ -26,7 +26,7 @@ async function submitSignup(signupToSubmit) {
     }
 }
 
-// Vérifier les informations du formulaire soient valident avant de l'envoyer au serveur
+// Check the validity of the information entered in the form
 function checkDataToSignUp() {
     const username = document.getElementById('username').value;
     const email = document.getElementById('email').value;
@@ -48,14 +48,14 @@ function checkDataToSignUp() {
 
 /*****************************************************************************/
 
+// Display page content if valid auth
 if (isLogged()) {
     toggleSignupPage();
     alert("Vous êtes déjà inscrit, vous allez être redirigé vers la page principale");
     window.location.href = "../index.html";
 
 } else {
-    console.log("je ne suis pas loggué")
-    const signupButton = document.getElementById('signup_button');
+    const signupButton = document.getElementById('signup_submit_button');
     signupButton.addEventListener("click", (event) => {
         event.preventDefault();
         checkDataToSignUp();

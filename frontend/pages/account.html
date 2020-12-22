@@ -28,30 +28,39 @@
     <link rel="stylesheet" type="text/css" href="../css/login.css">
     <link rel="stylesheet" type="text/css" href="../css/stylesheet.css">
 
-    <script src="../js/modules/toggle.js" defer></script>
-    <script src="../js/modules/auth.js" defer></script>
+    <script src="../js/functions/toggle.js" defer></script>
+    <script src="../js/functions/auth.js" defer></script>
     <script src="../js/account.js" defer></script>
 </head>
 
 <body>
-    <header class="header">
-        <div>
-            <a href="../index.html" class="header_button"><img src="../images/icon-left-font-monochrome-black.svg
-            " alt="Logo de Groupomania" class="header_logo_img"></a>
-        </div>
 
-        <div>
-            <button class="ui fade animated negative button header_button invisible" id="disconnect">
-                <span class="visible content"><i class="power off icon"></i></span>
-                <span class="hidden content">Quit</span>
-            </button>
-        </div>
+    <header>
+        <div id="header_box" class="ui text menu">
+            <div class="item">
+                <a href="../index.html" class="header_button"><img id="header_logo" src="../images/icon-left-font-monochrome-black.svg " alt="Logo de Groupomania" /></a>
+            </div>
+    
+            <div id="header_button_not_logged" class="right item">
+                <a href="account.html" role="button" id="account_button" class="ui bluestar inverted button">Log In</a>
+                <a href="signup.html" role="button" id="signup_button" class="ui bluestar button header_button">Sign Up</a>
+            </div>
+    
+            <div id="header_button_isLoggedIn" class="ui right dropdown item invisible" tabindex="0">
+              <span id="header_button_isLoggedIn_username">{{ UserName }}</span><i class="dropdown icon"></i>
+              <div class="menu" tabindex="-1">
+                <div class="item"><a id="dropdown_account_button" href="account.html" role="button"  class="ui basic button"><i class="user icon"></i>Compte</a></div>
+                <div class="item"><button id="disconnect_button" class="ui basic button"><i class="power off icon"></i>Deconnexion</button></div>
+              </div>
+            </div>
+          </div>
     </header>
+
     <main id="container">
         <div id="isNotLoggedIn" class="ui middle aligned center aligned grille">
             <div class="center aligned column">
                 <h1 class="ui image header">
-                    <img src="../images/icon.png" alt="Logo Groupomania sans habillage" class="ui medium image">
+                    <img src="../images/icon_transparent.png" alt="Logo Groupomania sans habillage" class="ui medium image">
                     <span id="titleForm" class="content">Connexion à votre compte</span>
                 </h1>
                 <div>
@@ -86,6 +95,7 @@
                 </div>
             </div>
         </div>
+
         <div id="isLoggedIn" class="ui grille invisible">
             <div id="userCard" class="ui cards">
                 <div class="card">
@@ -103,6 +113,7 @@
                       <span class="visible content">Supprimer le compte</span>
                   </div>
                 </div>
+            </div>
         </div>
     </main>
 </body>

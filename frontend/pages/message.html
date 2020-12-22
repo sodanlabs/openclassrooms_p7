@@ -25,76 +25,82 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.css">
 <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.js" defer></script>
 
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
 
 
     <link rel="shortcut icon" type="image/x-icon" href="../images/favicon.ico">
     <link rel="stylesheet" type="text/css" href="../css/stylesheet.css">
     
-    <script src="../js/modules/toggle.js" defer></script>
-    <script src="../js/modules/auth.js" defer></script>
     <script src="../js/classes/Message.js" defer></script>
+    <script src="../js/functions/modal.js" defer></script> 
+    <script src="../js/functions/toggle.js" defer></script>
+    <script src="../js/functions/auth.js" defer></script>
     <script src="../js/message.js" defer></script>
 </head>
 <body>
-    <header class="header">
-        <div>
-          <a href="../index.html" class="header_button"
-            ><img
-              src="../images/icon-left-font-monochrome-black.svg
-              "
-              alt="Logo de Groupomania"
-              class="header_logo_img"
-          /></a>
+  <header>
+    <div id="header_box" class="ui text menu">
+        <div class="item">
+            <a href="../index.html" class="header_button"><img id="header_logo" src="../images/icon-left-font-monochrome-black.svg " alt="Logo de Groupomania" /></a>
         </div>
-  
-        <div>
-          <a
-            href="account.html"
-            role="button"
-            id="account"
-            class="ui fade animated button header_button"
-          >
-            <div class="visible content"><i class="user icon"></i></div>
-            <div class="hidden content">Compte</div>
-          </a>
-  
-          <button
-            class="ui fade animated negative button header_button invisible"
-            id="disconnect"
-          >
-            <span class="visible content"><i class="power off icon"></i></span>
-            <span class="hidden content">Quit</span>
-          </button>
-        </div>
-      </header>
-    <main id="container" class='mainContainer'>
-        <div id="modale" class="invisible">
-            <form id="messageForm" class="ui form">
-                <div class="field">
-                  <label for="title">Title du message</label>
-                  <input type="text" id="title" name="TitleMessage" placeholder="Titre du message" title="Le titre doit faire minimum 3 caractères" pattern="[a-zA-Z0-9]{3,}">
-                </div>
-                <div class="field">
-                  <label for="description">Description</label>
-                  <textarea type="text" rows="2" id="description" name="DescriptionMessage" placeholder="Votre message ici..." title="Votre message doit faire minimum 3 caractères" pattern="[a-zA-Z0-9]{3,}"></textarea>
-                </div>
-                <div class="field">
-                    <label for="attachment">Ajouter une image</label>
-                    <input type="file" id="attachment" name="AttachmentMessage" accept="image/png, image/jpeg">
-                  </div>
-                <div>
-                <button class="ui fade animated button active" id="modifyMessage" type="submit">
-                    <span class="hidden content"><i class="paper plane icon"></i></span>
-                    <span class="visible content">Modifier le message</span>
-                </button>
-                <button class="ui bottom attached red animated button" id="deleteMessage">
-                <span class="hidden content"><i class="trash alternate icon"></i></span>
-                <span class="visible content">Supprimer le message</span>
-                </button>
-            </div>
-            </form>
 
+        <div id="header_button_not_logged" class="right item">
+            <a href="account.html" role="button" id="account_button" class="ui bluestar inverted button">Log In</a>
+            <a href="signup.html" role="button" id="signup_button" class="ui bluestar button header_button">Sign Up</a>
         </div>
+
+        <div id="header_button_isLoggedIn" class="ui right dropdown item invisible" tabindex="0">
+          <span id="header_button_isLoggedIn_username">{{ UserName }}</span><i class="dropdown icon"></i>
+          <div class="menu" tabindex="-1">
+            <div class="item"><a id="dropdown_account_button" href="account.html" role="button"  class="ui basic button"><i class="user icon"></i>Compte</a></div>
+            <div class="item"><button id="disconnect_button" class="ui basic button"><i class="power off icon"></i>Deconnexion</button></div>
+          </div>
+        </div>
+      </div>
+</header>
+
+<!--********************************************************************-->
+
+    <main id="container" class='mainContainer'>
+
+    <div id="postbox"></div>
+
+<!--********************************************************************-->
+        
+      <div id="container-form" class="modal invisible" aria-hidden=true role="form" aria-labelledby="title-modal">
+        <form id="messageForm" class="ui form modal-wrapper js-modal-stop">
+          <button id="close-button" class="js-modal-close ui icon red button">
+            <i class="close icon"></i><span class="invisible">Fermer la boite modale</span>
+          </button>
+          <h1 id="title-modal">Envie d'un changement ?</h1>
+          <div class="field">
+            <label for="title">Title du message</label>
+            <input type="text" id="title" name="TitleMessage" title="Le titre doit faire minimum 3 caractères"
+              pattern="[a-zA-Z0-9]{3,}" required>
+          </div>
+          <div class="field">
+            <label for="description">Description</label>
+            <textarea rows="2" id="description" name="DescriptionMessage"
+              title="Votre message doit faire minimum 3 caractères" required></textarea>
+          </div>
+          <div class="field">
+            <label for="attachment">Ajouter ou modifier l'image</label>
+            <input type="file" id="attachment" name="AttachmentMessage" accept="image/gif, image/png, image/jpeg, image/jpeg">
+          </div>
+          <div class="modify_delete_button">
+            <button id="modifyMessage" class="ui fade animated green button">
+              <span class="hidden content"><i class="paper plane icon"></i></span>
+              <span class="visible content">Modifier</span>
+            </button>
+      
+            <button id="deleteMessage" class="ui right animated red button">
+              <span class="hidden content"><i class="trash alternate icon"></i></span>
+              <span class="visible content">Supprimer</span>
+            </button>
+          </div>
+        </form>
+      </div>
     </main>
 </body>
 </html>

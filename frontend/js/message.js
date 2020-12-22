@@ -1,6 +1,7 @@
 "use strict"
 
-async function deleteMessagFromDb() {
+// Delete the message stored in the server
+async function deleteMessageFromDb() {
     const authentification = JSON.parse(localStorage.getItem("Auth"));
     try {
         const response = await fetch("http://localhost:3000/api/message/" + getMessageId(), {
@@ -10,6 +11,7 @@ async function deleteMessagFromDb() {
             }
         });
         if (response.status == 201) {
+            closeModal(stateModalEvent);
             alert("Le message a bien été supprimé");
             window.location.href = "../index.html";
         } else {
@@ -21,6 +23,7 @@ async function deleteMessagFromDb() {
     }
 }
 
+// Send the modified message to the server
 async function updateMessage(messageToSend) {
     const authentification = JSON.parse(localStorage.getItem("Auth"));
     try {
@@ -32,6 +35,7 @@ async function updateMessage(messageToSend) {
             body: messageToSend
         });
         if (response.status == 201) {
+            closeModal(stateModalEvent);
             alert("Le message a bien été modifié");
             // Recharge la page actuelle pour faire apparaitre le message
             document.location.reload();
@@ -43,6 +47,7 @@ async function updateMessage(messageToSend) {
     }
 }
 
+// Check the validity of the information entered in the form
 function checkDataMessageToSubmitBeforeUpdate() {
     const messageToSend = new FormData();
     const title = document.getElementById('title').value;
@@ -68,7 +73,7 @@ function checkDataMessageToSubmitBeforeUpdate() {
     }
 }
 
-// Vérifie si l'utilisateur a le droit de modifier le message
+// Check if user rights to modify message
 function getIfUserCanModifyMessage(authorMessage, userId, userPermission) {
     if (authorMessage == userId || userPermission == true) {
         return true;
@@ -77,20 +82,28 @@ function getIfUserCanModifyMessage(authorMessage, userId, userPermission) {
     }
 }
 
-// Affiche le formulaire pour modifier le message
+// Show the Form in a modal window
 function toggleModalForm() {
-    const modale = document.getElementById("modale");
-    modale.classList.toggle('invisible');
+    const modal = document.getElementById("modal");
+    modal.classList.toggle('invisible');
 }
 
-// Récupérer l'Id depuis l'url
+// Get the message Id from url
 function getMessageId() {
     const dataQuery = window.location.search;
     const messageId = dataQuery.replace("?id=", "");
     return messageId;
 }
 
-// Récupérer les informations du produit à partir de son Id et le charge dans la page
+// Remove decoration for message page
+function removeDecoration(messageId) {
+    const bodyMessageDecoration = document.getElementsByClassName('message_body_content_description')[0];
+    bodyMessageDecoration.classList.remove("blur", "line_clamp");
+    document.getElementById(`message_${messageId}`).removeAttribute("href");
+}
+
+
+// Get the message informations from it's Id and load it into the page
 async function getMessage() {
     const authentification = JSON.parse(localStorage.getItem("Auth"));
     try {
@@ -103,30 +116,39 @@ async function getMessage() {
         if (response.ok) {
             const messageData = await response.json();
             const createCard = new Messages(messageData.id, messageData.userId, messageData.title, messageData.description, messageData.attachment);
-            createCard.appendCardMessageToContainer();
-            // createCard.appendItemMessageToContainer();
 
-            document.getElementById(createCard.id).removeAttribute("href");
+            createCard.initMessage();
+            removeDecoration(createCard.id);
 
-            // Test si les droits utilisateur et affiche le formulaire
+            // Test if user rights and display the form
             const userRights = getIfUserCanModifyMessage(messageData.userId, authentification.userId, authentification.isAdmin);
 
             if (userRights == true) {
-                toggleModalForm();
+
+                const message_body_modify = document.getElementsByClassName('message_body_modify')[0];
+                message_body_modify.classList.toggle('invisible');
+                const modifyButton = document.getElementById('modify_button');
+                modifyButton.addEventListener('click', (event) => {
+                openModal(event);
+                });
+
                 const modifyMessage = document.getElementById('modifyMessage');
                 modifyMessage.addEventListener("click", (event) => {
                     event.preventDefault();
+                    stateModalEvent = event;
                     checkDataMessageToSubmitBeforeUpdate();
                 });
 
                 const deleteMessage = document.getElementById('deleteMessage');
                 deleteMessage.addEventListener("click", (event) => {
                     event.preventDefault();
-                    deleteMessagFromDb();
+                    stateModalEvent = event;
+                    deleteMessageFromDb();
                 });
             }
 
         } else {
+            displayMessage("On ne connait pas ce message, attendez encore un peu, il arriva peut-être... 😁");
             console.error('Response Erreur : ', response.status);
         }
     } catch (error) {
@@ -136,12 +158,15 @@ async function getMessage() {
 
 /*******************************************************************************/
 
+let stateModalEvent = null;
+
+// Display page content if valid auth
 if (isLogged()) {
     if (!getMessageId()) {
-        displayMessage("On ne connait pas ce message, attendez encore un peu, il arriva peut-être... 😁");
+        displayMessage("Oops, pas de bras, pas de chocolat 🍫 \n ce message n'existe pas mais on croit en vous !");
     } else {
         getMessage();
     }
 } else {
-    displayMessage("Vous n'êtes pas autorisé à aller plus loin, veuillez vous authetifier. Merci");
+    window.location.href = "account.html";
 }
