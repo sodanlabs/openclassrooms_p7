@@ -1,109 +1,101 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 
-    <title>Groupomania</title>
-    <meta name="description" content="Groupomania" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 
-    <!-- Twitter Card data -->
-    <meta name="twitter:card" content="summary" />
-    <meta property="twitter:description" content="Groupomania" />
-    <meta
-      name="twitter:url"
-      content="https://sodanlabs.github.io/openclassrooms_p7/"
-    />
+  <title>Groupomania</title>
+  <meta name="description" content="Groupomania" />
 
-    <!-- Open Graph data -->
-    <meta property="og:title" content="Groupomania" />
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:url"
-      content="https://sodanlabs.github.io/openclassrooms_p7/"
-    />
-    <meta property="og:description" content="Groupomania" />
+  <!-- Twitter Card data -->
+  <meta name="twitter:card" content="summary" />
+  <meta property="twitter:description" content="Groupomania" />
+  <meta name="twitter:url" content="https://sodanlabs.github.io/openclassrooms_p7/" />
 
-    <!-- Fomantic UI - / You MUST include jQuery before CSS -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"
-      defer
-    ></script>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.css"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.js"
-      defer
-    ></script>
+  <!-- Open Graph data -->
+  <meta property="og:title" content="Groupomania" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sodanlabs.github.io/openclassrooms_p7/" />
+  <meta property="og:description" content="Groupomania" />
 
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+    crossorigin="anonymous" />
 
-    <script src="js/classes/Message.js" defer></script>
-    <script src="js/functions/modal.js" defer></script>
-    <script src="js/functions/toggle.js" defer></script>
-    <script src="js/functions/auth.js" defer></script>
-    <script src="js/index.js" defer></script>
-  </head>
-  <body>
-    <header>
-      <div class="ui text menu">
-          <div class="item">
-              <a href="index.html" class="header_button"><img id="header_logo" src="/images/icon-left-font-monochrome-black.svg " alt="Logo de Groupomania" /></a>
-          </div>
+  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
 
-          <div id="header_button_not_logged" class="right item">
-              <a href="/pages/account.html" role="button" id="account_button" class="ui blue inverted button">Log In</a>
-              <a href="/pages/signup.html" role="button" id="signup_button" class="ui blue button header_button">Sign Up</a>
-          </div>
+  <script src="js/classes/Message.js" defer></script>
+  <script src="js/functions/modal.js" defer></script>
+  <script src="js/functions/toggle.js" defer></script>
+  <script src="js/functions/auth.js" defer></script>
+  <script src="js/index.js" defer></script>
+</head>
 
-          <div id="header_button_isLoggedIn" class="ui right dropdown item invisible" tabindex="0">
-            <span id="header_button_isLoggedIn_username">{{ UserName }}</span><i class="dropdown icon"></i>
-            <div class="menu" tabindex="-1">
-              <div class="item"><a id="dropdown_account_button" href="/pages/account.html" role="button"  class="ui basic button"><i class="user icon"></i>Compte</a></div>
-              <div class="item"><button id="disconnect_button" class="ui basic button"><i class="power off icon"></i>Deconnexion</button></div>
-            </div>
-          </div>
-        </div>
+<body>
+  <header>
+    <div class="header_logo">
+      <a href="index.html" class="header_button"><img id="header_logo_image"
+          src="/images/icon-left-font-monochrome-black.svg " alt="Logo de Groupomania" /></a>
+    </div>
+
+    <div id="header_button_not_logged">
+      <a href="/pages/account.html" role="button" id="account_button" class="blue button ">Log In</a>
+      <a href="/pages/signup.html" role="button" id="signup_button" class="inverted_blue button">Sign Up</a>
+    </div>
+
+    <div id="header_button_isLoggedIn" class="invisible" tabindex="0">
+      <!-- <span id="header_button_isLoggedIn_username">{{ UserName }}</span><i class="dropdown icon"></i> -->
+      <div id="logged_button" tabindex="-1">
+        <a id="dropdown_account_button" href="/pages/account.html" role="button" class="logged_button_item grey"><i
+            class="fas fa-user"></i><span>Compte</span></a>
+
+        <a id="disconnect_button" role="button" class="logged_button_item inverted_grey"><i
+            class="fas fa-power-off"></i><span>Deconnexion</span></a>
+      </div>
+    </div>
   </header>
 
-<!--********************************************************************-->
+  <!--********************************************************************-->
 
-    <main id="container" class="mainContainer">
-
-      <a id="writeMessageButton" class="ui basic green button js-modal-open invisible" href="#container-form"><i class="send icon"></i>Écrire un message</a>
-
-      <div id="postbox"></div>
-
-<!--********************************************************************-->      
-
-      <div id="container-form" class="modal invisible" aria-hidden="true" role="form" aria-labelledby="title-modal">
-        <form id="messageForm" class="ui form modal-wrapper js-modal-stop">
-            <button id="close-button" class="js-modal-close ui icon red button">
-                <i class="close icon"></i><span class="invisible">Fermer la boite modale</span>
-            </button>
-            <h1 id="title-modal">Nouveau message</h1>
-            <div class="field">
-              <label for="title">Title du message</label>
-              <input type="text" id="title" name="TitleMessage" placeholder="Titre de votre message" title="Le titre doit faire minimum 3 caractères" pattern="[a-zA-Z0-9]{3,}" required>
-            </div>
-            <div class="field">
-              <label for="description">Description</label>
-              <textarea rows="2" id="description" placeholder="Description de votre message" name="DescriptionMessage" title="Votre message doit faire minimum 3 caractères" required></textarea>
-            </div>
-            <div class="field">
-                <label for="attachment">Ajouter une image</label>
-                <input type="file" id="attachment" name="AttachmentMessage" accept="image/gif, image/png, image/jpeg, image/jpeg">
-            </div>
-            <button class="ui fade animated button active" id="submitButton" type="submit">
-                <span class="hidden content"><i class="paper plane icon"></i></span>
-                <span class="visible content">Envoyer le message</span>
-            </button>
-        </form>
+  <main id="container" class="mainContainer">
+    <div id="postbox">
+      <a id="writeMessageButton" class="ui basic green button js-modal-open invisible" href="#container-form"><i
+          class="send icon"></i>Écrire un message</a>
     </div>
-    </main>
-  </body>
+
+    <!--********************************************************************-->
+
+    <div id="container-form" class="modal invisible" aria-hidden="true" role="form" aria-labelledby="title-modal">
+      <form id="messageForm" class="ui form modal-wrapper js-modal-stop">
+        <button id="close-button" class="js-modal-close ui icon red button">
+          <i class="fas fa-times"></i><span class="invisible">Fermer la boite modale</span>
+        </button>
+        <h1 id="title-modal">Nouveau message</h1>
+        <div class="field">
+          <label for="title">Title du message</label>
+          <input type="text" id="title" name="TitleMessage" placeholder="Titre de votre message"
+            title="Le titre doit faire minimum 3 caractères" pattern="[a-zA-Z0-9]{3,}" required>
+        </div>
+        <div class="field">
+          <label for="description">Description</label>
+          <textarea rows="2" id="description" placeholder="Description de votre message" name="DescriptionMessage"
+            title="Votre message doit faire minimum 3 caractères" contenteditable required></textarea>
+        </div>
+        <div class="field">
+          <label for="attachment">Ajouter une image</label>
+          <input type="file" id="attachment" name="AttachmentMessage"
+            accept="image/gif, image/png, image/jpeg, image/jpeg">
+        </div>
+        <button class="ui fade animated button active" id="submitButton" type="submit">
+          <span class="hidden content"><i class="paper plane icon"></i></span>
+          <span class="visible content">Envoyer le message</span>
+        </button>
+      </form>
+    </div>
+  </main>
+</body>
+
 </html>

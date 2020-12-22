@@ -102,7 +102,6 @@ function removeDecoration(messageId) {
     document.getElementById(`message_${messageId}`).removeAttribute("href");
 }
 
-
 // Get the message informations from it's Id and load it into the page
 async function getMessage() {
     const authentification = JSON.parse(localStorage.getItem("Auth"));

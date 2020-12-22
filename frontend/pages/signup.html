@@ -1,181 +1,125 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 
-    <title>Groupomania</title>
-    <meta name="description" content="Groupomania" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 
-    <!-- Twitter Card data -->
-    <meta name="twitter:card" content="summary" />
-    <meta property="twitter:description" content="Groupomania" />
-    <meta
-      name="twitter:url"
-      content="https://sodanlabs.github.io/openclassrooms_p7/"
-    />
+  <title>Groupomania</title>
+  <meta name="description" content="Groupomania" />
 
-    <!-- Open Graph data -->
-    <meta property="og:title" content="Groupomania" />
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:url"
-      content="https://sodanlabs.github.io/openclassrooms_p7/"
-    />
-    <meta property="og:description" content="Groupomania" />
+  <!-- Twitter Card data -->
+  <meta name="twitter:card" content="summary" />
+  <meta property="twitter:description" content="Groupomania" />
+  <meta name="twitter:url" content="https://sodanlabs.github.io/openclassrooms_p7/" />
 
-    <!-- Fomantic UI - / You MUST include jQuery before CSS -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"
-      defer
-    ></script>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.css"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.js"
-      defer
-    ></script>
+  <!-- Open Graph data -->
+  <meta property="og:title" content="Groupomania" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sodanlabs.github.io/openclassrooms_p7/" />
+  <meta property="og:description" content="Groupomania" />
 
-    <link
-      rel="shortcut icon"
-      type="image/x-icon"
-      href="../images/favicon.ico"
-    />
-    <link rel="stylesheet" type="text/css" href="../css/login.css" />
-    <link rel="stylesheet" type="text/css" href="../css/stylesheet.css" />
+  <!-- Fomantic UI - / You MUST include jQuery before CSS -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.js" defer></script>
 
-    <script src="../js/functions/toggle.js" defer></script>
-    <script src="../js/functions/auth.js" defer></script>
-    <script src="../js/signup.js" defer></script>
-  </head>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+    crossorigin="anonymous" />
 
-  <body>
+  <link rel="shortcut icon" type="image/x-icon" href="../images/favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="../css/login.css" />
+  <link rel="stylesheet" type="text/css" href="../css/stylesheet.css" />
 
-    <header>
-      <div id="header_box" class="ui text menu">
-          <div class="item">
-              <a href="../index.html" class="header_button"><img id="header_logo" src="../images/icon-left-font-monochrome-black.svg " alt="Logo de Groupomania" /></a>
-          </div>
-  
-          <div id="header_button_not_logged" class="right item">
-              <a href="account.html" role="button" id="account_button" class="ui bluestar inverted button">Log In</a>
-              <a href="signup.html" role="button" id="signup_button" class="ui bluestar button header_button">Sign Up</a>
-          </div>
-  
-          <div id="header_button_isLoggedIn" class="ui right dropdown item invisible" tabindex="0">
-            <span id="header_button_isLoggedIn_username">{{ UserName }}</span><i class="dropdown icon"></i>
-            <div class="menu" tabindex="-1">
-              <div class="item"><a id="dropdown_account_button" href="account.html" role="button"  class="ui basic button"><i class="user icon"></i>Compte</a></div>
-              <div class="item"><button id="disconnect_button" class="ui basic button"><i class="power off icon"></i>Deconnexion</button></div>
-            </div>
-          </div>
-        </div>
+  <script src="../js/functions/toggle.js" defer></script>
+  <script src="../js/functions/auth.js" defer></script>
+  <script src="../js/signup.js" defer></script>
+</head>
+
+<body>
+
+  <header>
+    <div class="header_logo">
+      <a href="../index.html" class="header_button"><img id="header_logo_image"
+          src="../images/icon-left-font-monochrome-black.svg " alt="Logo de Groupomania" /></a>
+    </div>
+
+    <div id="header_button_not_logged">
+      <a href="account.html" role="button" id="account_button" class="blue button ">Log In</a>
+      <a href="signup.html" role="button" id="signup_button" class="inverted_blue button">Sign Up</a>
+    </div>
+
+    <div id="header_button_isLoggedIn" class="invisible" tabindex="0">
+      <!-- <span id="header_button_isLoggedIn_username">{{ UserName }}</span><i class="dropdown icon"></i> -->
+      <div id="logged_button" tabindex="-1">
+        <a id="dropdown_account_button" href="account.html" role="button" class="logged_button_item grey"><i
+            class="fas fa-user"></i><span>Compte</span></a>
+
+        <button id="disconnect_button" class="logged_button_item inverted_grey"><i
+            class="fas fa-power-off"></i><span>Deconnexion</span></button>
+      </div>
+    </div>
   </header>
-  
-    <main id="container">
-      <div id="isLoggedIn" class="ui middle aligned center aligned grille">
-        <div class="center aligned column">
-          <h1 class="ui image header">
-            <img
-              src="../images/icon_transparent.png"
-              alt="Logo Groupomania sans habillage"
-              class="ui medium image"
-            />
-            <span id="titleForm" class="content">Inscription</span>
-          </h1>
-          <div>
-            <form id="signupForm" class="ui large form">
-              <div class="ui stacked segment">
-                <div class="field">
-                  <div class="field">
-                    <div class="ui left icon input">
-                      <i class="user icon"></i>
-                      <label for="username" class="invisible"
-                        >Nom d'utilisateur</label
-                      >
-                      <input
-                        id="username"
-                        type="text"
-                        name="password"
-                        placeholder="Nom d'utilisateur"
-                        title="Le nom d'utilisateur doit faire entre 5 et 12 caractères"
-                        pattern="[a-zA-Z0-9]{5,12}"
-                        required
-                      />
-                    </div>
-                  </div>
 
+  <main id="container">
+    <div id="isLoggedIn" class="ui middle aligned center aligned grille">
+      <div class="center aligned column">
+        <h1 class="ui image header">
+          <span id="titleForm" class="content">Inscription</span>
+        </h1>
+        <div>
+          <form id="signupForm" class="ui large form">
+            <div class="ui stacked segment">
+              <div class="field">
+                <div class="field">
                   <div class="ui left icon input">
-                    <i class="envelope icon"></i>
-                    <label for="email" class="invisible">Adresse E-mail</label>
-                    <input
-                      id="email"
-                      type="email"
-                      name="email"
-                      placeholder="Adresse e-mail"
-                      pattern="^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$"
-                      required
-                    />
+                    <i class="user icon"></i>
+                    <label for="username" class="invisible">Nom d'utilisateur</label>
+                    <input id="username" type="text" name="password" placeholder="Nom d'utilisateur"
+                      title="Le nom d'utilisateur doit faire entre 5 et 12 caractères" pattern="[a-zA-Z0-9]{5,12}"
+                      required />
                   </div>
                 </div>
 
-                <div class="field">
-                  <div class="ui left icon input">
-                    <i class="lock icon"></i>
-                    <label for="password" class="invisible">Mot de passe</label>
-                    <input
-                      id="password"
-                      type="password"
-                      name="password"
-                      placeholder="Mot de passe"
-                      title="Le mot de passe doit faire entre 4 et 8 caractères et doit contenir au moins un 1 nombre"
-                      pattern="^(?=.*\d).{4,8}$"
-                      required
-                    />
-                  </div>
-                </div>
-                <div>
-                  <button
-                    id="signup_submit_button"
-                    name="signup_button"
-                    type="button"
-                    class="ui labeled icon button"
-                  >
-                    <i class="left save icon"></i>
-                    S'enregistrer
-                  </button>
-                  <div class="ui toggle checkbox">
-                    <input type="checkbox" id="isAdmin" name="isAdmin">
-                    <label for="isAdmin">Admin</label>
-                  </div>
+                <div class="ui left icon input">
+                  <i class="envelope icon"></i>
+                  <label for="email" class="invisible">Adresse E-mail</label>
+                  <input id="email" type="email" name="email" placeholder="Adresse e-mail"
+                    pattern="^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$" required />
                 </div>
               </div>
-            </form>
-            <div class="ui message">
-              Se connecter à son compte ?
-              <a href="account.html">Login</a>
+
+              <div class="field">
+                <div class="ui left icon input">
+                  <i class="lock icon"></i>
+                  <label for="password" class="invisible">Mot de passe</label>
+                  <input id="password" type="password" name="password" placeholder="Mot de passe"
+                    title="Le mot de passe doit faire entre 4 et 8 caractères et doit contenir au moins un 1 nombre"
+                    pattern="^(?=.*\d).{4,8}$" required />
+                </div>
+              </div>
+              <div>
+                <button id="signup_submit_button" name="signup_button" type="button" class="ui labeled icon button">
+                  <i class="left save icon"></i>
+                  S'enregistrer
+                </button>
+                <div class="ui toggle checkbox">
+                  <input type="checkbox" id="isAdmin" name="isAdmin">
+                  <label for="isAdmin">Admin</label>
+                </div>
+              </div>
             </div>
+          </form>
+          <div class="ui message">
+            Se connecter à son compte ?
+            <a href="account.html">Login</a>
           </div>
         </div>
       </div>
-      <div id="isLoggedIn" class="invisible">
-        <p>
-          Montrer toutes les information du compte sous forme d'une carte ==
-          récupérer toutes information depuis le token
-        </p>
-        <button
-          class="ui right animated red button header_button"
-          id="delete_button"
-        >
-          <span class="hidden content"
-            ><i class="trash alternate icon"></i
-          ></span>
-          <span class="visible content">Supprimer le compte</span>
-        </button>
-      </div>
-    </main>
-  </body>
+    </div>
+  </main>
+</body>
+
 </html>

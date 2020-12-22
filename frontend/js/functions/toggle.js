@@ -2,9 +2,9 @@
 
 // Hide the main container and display a message
 function displayMessage(texte) {
-    const elementBody = document.body;
+    const elementBody = document.getElementById('container');
     const messageBox = document.createElement('div');
-    messageBox.classList.add("ui", "negative", "message", "messageDisplayed");
+    messageBox.classList.add("messageDisplayed");
     
     const messageHeader = document.createElement('div');
     messageHeader.classList.add("header");
@@ -18,8 +18,6 @@ function displayMessage(texte) {
     messageBox.appendChild(pContent);
     elementBody.appendChild(messageBox);
 
-    const invisibleContainer = document.getElementById("container");
-    invisibleContainer.classList.toggle('invisible');
 }
 
 // Show or hide the menu bar
@@ -30,9 +28,9 @@ function toggleHeaderButton() {
     const buttonIsLoggedIn = document.getElementById("header_button_isLoggedIn");
     buttonIsLoggedIn.classList.toggle('invisible');
 
-    const authentification = JSON.parse(localStorage.getItem("Auth"));
-    const username = document.getElementById("header_button_isLoggedIn_username");
-    username.textContent = authentification.username;
+    // const authentification = JSON.parse(localStorage.getItem("Auth"));
+    // const username = document.getElementById("header_button_isLoggedIn_username");
+    // username.textContent = authentification.username;
     
 }
 
@@ -46,7 +44,8 @@ function toggleAccountPage() {
 }
 
 // JQuery pour l'affichage du dropdown du header
-$('.ui.dropdown')
-.dropdown({
-    clearable: true
-});
+
+// $('.ui.dropdown')
+// .dropdown({
+//     clearable: true
+// });

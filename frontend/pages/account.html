@@ -24,6 +24,11 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.css">
     <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.js" defer></script>
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
+
     <link rel="shortcut icon" type="image/x-icon" href="../images/favicon.ico">
     <link rel="stylesheet" type="text/css" href="../css/login.css">
     <link rel="stylesheet" type="text/css" href="../css/stylesheet.css">
@@ -36,31 +41,32 @@
 <body>
 
     <header>
-        <div id="header_box" class="ui text menu">
-            <div class="item">
-                <a href="../index.html" class="header_button"><img id="header_logo" src="../images/icon-left-font-monochrome-black.svg " alt="Logo de Groupomania" /></a>
+        <div class="header_logo">
+            <a href="../index.html" class="header_button"><img id="header_logo_image"
+                    src="../images/icon-left-font-monochrome-black.svg " alt="Logo de Groupomania" /></a>
+        </div>
+
+        <div id="header_button_not_logged">
+            <a href="account.html" role="button" id="account_button" class="blue button ">Log In</a>
+            <a href="signup.html" role="button" id="signup_button" class="inverted_blue button">Sign Up</a>
+        </div>
+
+        <div id="header_button_isLoggedIn" class="invisible" tabindex="0">
+            <!-- <span id="header_button_isLoggedIn_username">{{ UserName }}</span><i class="dropdown icon"></i> -->
+            <div id="logged_button" tabindex="-1">
+                <a id="dropdown_account_button" href="account.html" role="button" class="logged_button_item grey"><i
+                        class="fas fa-user"></i><span>Compte</span></a>
+
+                <button id="disconnect_button" class="logged_button_item inverted_grey"><i
+                        class="fas fa-power-off"></i><span>Deconnexion</span></button>
             </div>
-    
-            <div id="header_button_not_logged" class="right item">
-                <a href="account.html" role="button" id="account_button" class="ui bluestar inverted button">Log In</a>
-                <a href="signup.html" role="button" id="signup_button" class="ui bluestar button header_button">Sign Up</a>
-            </div>
-    
-            <div id="header_button_isLoggedIn" class="ui right dropdown item invisible" tabindex="0">
-              <span id="header_button_isLoggedIn_username">{{ UserName }}</span><i class="dropdown icon"></i>
-              <div class="menu" tabindex="-1">
-                <div class="item"><a id="dropdown_account_button" href="account.html" role="button"  class="ui basic button"><i class="user icon"></i>Compte</a></div>
-                <div class="item"><button id="disconnect_button" class="ui basic button"><i class="power off icon"></i>Deconnexion</button></div>
-              </div>
-            </div>
-          </div>
+        </div>
     </header>
 
     <main id="container">
         <div id="isNotLoggedIn" class="ui middle aligned center aligned grille">
             <div class="center aligned column">
                 <h1 class="ui image header">
-                    <img src="../images/icon_transparent.png" alt="Logo Groupomania sans habillage" class="ui medium image">
                     <span id="titleForm" class="content">Connexion à votre compte</span>
                 </h1>
                 <div>
@@ -70,7 +76,9 @@
                                 <div class="ui left icon input">
                                     <i class="envelope icon"></i>
                                     <label for="email" class="invisible">Adresse E-mail</label>
-                                    <input id="email" type="email" name="email" placeholder="Adresse e-mail" pattern="^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$" required/>
+                                    <input id="email" type="email" name="email" placeholder="Adresse e-mail"
+                                        pattern="^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$"
+                                        required />
                                 </div>
                             </div>
 
@@ -78,11 +86,13 @@
                                 <div class="ui left icon input">
                                     <i class="lock icon"></i>
                                     <label for="password" class="invisible">Mot de passe</label>
-                                    <input id="password" type="password" name="password" placeholder="Mot de passe" required/>
+                                    <input id="password" type="password" name="password" placeholder="Mot de passe"
+                                        required />
                                 </div>
                             </div>
 
-                            <button id="login_button" name="login_button" type="submit" class="ui fluid right animated icon button">
+                            <button id="login_button" name="login_button" type="submit"
+                                class="ui fluid right animated icon button">
                                 <span class="visible content">Se connecter</span>
                                 <span class="hidden content"><i class="right sign in icon"></i></span>
                             </button>
@@ -102,19 +112,20 @@
                     <div class="content">
                         <div id="userCardUserName" class="header">UserName</div>
                     </div>
-                  <div class="content">
-                    <div id="userCardContent" class="description">
-                      <p id="userCardId">UserId</p>
-                      <p id="userCardToken">UserToken</p>
+                    <div class="content">
+                        <div id="userCardContent" class="description">
+                            <p id="userCardId">UserId</p>
+                            <p id="userCardToken">UserToken</p>
+                        </div>
                     </div>
-                  </div>
-                  <div class="ui bottom attached red animated button" id="delete_button">
-                      <span class="hidden content"><i class="trash alternate icon"></i></span>
-                      <span class="visible content">Supprimer le compte</span>
-                  </div>
+                    <div class="ui bottom attached red animated button" id="delete_button">
+                        <span class="hidden content"><i class="trash alternate icon"></i></span>
+                        <span class="visible content">Supprimer le compte</span>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
 </body>
+
 </html>

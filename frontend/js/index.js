@@ -95,6 +95,5 @@ if (isLogged()) {
     });
     
 } else {
-    alert("Vous n'êtes pas autorisé à aller plus loin, veuillez vous authentifier. Merci");
     window.location.href = "./pages/account.html";
 }

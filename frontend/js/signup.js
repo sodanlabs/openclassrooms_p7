@@ -50,8 +50,6 @@ function checkDataToSignUp() {
 
 // Display page content if valid auth
 if (isLogged()) {
-    toggleSignupPage();
-    alert("Vous êtes déjà inscrit, vous allez être redirigé vers la page principale");
     window.location.href = "../index.html";
 
 } else {
