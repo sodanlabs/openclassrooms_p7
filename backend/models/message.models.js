@@ -14,7 +14,7 @@ module.exports = (sequelize, Sequelize) => {
         },
         description: {
             allowNull: false,
-            type     : Sequelize.STRING
+            type     : Sequelize.TEXT
         },
         attachment: {
             allowNull: true,
