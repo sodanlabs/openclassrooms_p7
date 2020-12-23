@@ -64,7 +64,7 @@ function checkDataMessageToSubmitBeforeUpdate() {
 
     if (!(typeof attachment === 'undefined')) {
         messageToSend.append("image", attachment);
-    }  
+    }
 
     if (title || description || !(typeof attachment === 'undefined')) {
         updateMessage(messageToSend);
@@ -128,7 +128,7 @@ async function getMessage() {
                 message_body_modify.classList.toggle('invisible');
                 const modifyButton = document.getElementById('modify_button');
                 modifyButton.addEventListener('click', (event) => {
-                openModal(event);
+                    openModal(event);
                 });
 
                 const modifyMessage = document.getElementById('modifyMessage');
@@ -165,6 +165,10 @@ if (isLogged()) {
         displayMessage("Oops, pas de bras, pas de chocolat 🍫 \n ce message n'existe pas mais on croit en vous !");
     } else {
         getMessage();
+        activePostCommentButton();
+        if (getAllComments()) {
+            activeDelCommentButton();
+        }
     }
 } else {
     window.location.href = "account.html";

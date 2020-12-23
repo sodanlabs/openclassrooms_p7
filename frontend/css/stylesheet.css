@@ -31,8 +31,6 @@ body::after {
     z-index: -1;   
 }
 
-
-
 .invisible {
     display: none !important;
 }
@@ -148,8 +146,9 @@ header {
 #container {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     align-items: center;
+    margin-bottom: 20px;
 }
 
 .message:hover {
@@ -161,6 +160,7 @@ header {
 
 #writeMessageButton {
     width: 100%;
+    max-width: 550px;
     height: 35px;
     border-radius: 4px;
     color:#050709;
@@ -363,9 +363,6 @@ textarea {
 }
 
 .message_body_content_description p {
-    /* max-width: 550px;
-    word-wrap: break-word; */
-    /* overflow: hidden; */
     text-align: left;
 }
 
@@ -425,3 +422,76 @@ border-radius: 4px;
     text-decoration: none;
 }
 
+/** Message **/
+/*****************************************************************************/
+
+#commentbox {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    order:2;
+}
+
+.post_comment_button {
+    display: flex;
+    justify-content: flex-end;
+    background-color: lightgray;
+}
+
+#postComment {
+    padding: 2px 10px;
+    margin: 3px 8px 3px 0;
+    border-radius: 4px;
+}
+
+#noComment {
+    text-align: center;
+}
+
+.commentError {
+    margin-top: 0;
+    margin-bottom: 10px;
+    padding:10px;
+}
+
+#listOfComment {
+    display: flex;
+    flex-direction: column-reverse; 
+}
+
+.comment {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-top: solid 1px #cccccc;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+#listOfComment .comment:last-of-type {
+    margin-top: 0;
+    padding-top:0;
+    border-top: none;
+}
+#listOfComment .comment:first-of-type {
+    margin-bottom: 10px;
+}
+
+.comment_body_content_meta {
+    color: #545454;
+    font-size: 0.75rem;
+}
+
+.delete_comment_button {
+    float: right;
+    padding: 5px 8px;
+    border-radius: 4px;
+}
+
+hr {
+    margin:20px 0 15px 0;
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}

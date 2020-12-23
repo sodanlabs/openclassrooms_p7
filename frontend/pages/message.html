@@ -27,10 +27,12 @@
   <link rel="shortcut icon" type="image/x-icon" href="../images/favicon.ico">
   <link rel="stylesheet" type="text/css" href="../css/stylesheet.css">
 
+  <script src="../js/classes/Comment.js" defer></script>
   <script src="../js/classes/Message.js" defer></script>
   <script src="../js/functions/modal.js" defer></script>
   <script src="../js/functions/toggle.js" defer></script>
   <script src="../js/functions/auth.js" defer></script>
+  <script src="../js/comment.js" defer></script>
   <script src="../js/message.js" defer></script>
 </head>
 
@@ -62,7 +64,26 @@
 
   <main id="container" class='mainContainer'>
 
-    <div id="postbox"></div>
+    <div id="postbox">
+      <div id="commentbox">
+        <div class="container-form">
+        <form id="commentForm" role="form" aria-label="Nouveau commentaire">
+          <div class="field">
+            <label for="textComment">Commentaire</label>
+            <textarea rows="2" id="textComment" name="textComment"
+            placeholder="Corps du commentaire" title="Votre commentaire doit faire minimum 3 caractères" required></textarea>
+          </div>
+        <div class="post_comment_button">
+          <button id="postComment" class="ui fade animated green button">
+            <span class="visible content">Poster</span>
+          </button>
+        </div>
+        </form>
+      </div>
+      <hr>
+      <div id="listOfComment"></div>
+      </div>
+    </div>
 
     <!--********************************************************************-->
 
