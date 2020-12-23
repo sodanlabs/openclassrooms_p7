@@ -42,7 +42,7 @@ async function deleteCommentFromDb(commentId) {
             }
         });
         if (response.status == 201) {
-            alert("Le message a bien été supprimé");
+            alert("Le commentaire a bien été supprimé");
             document.location.reload();
         } else {
             alert("Rien ne s'est passé comme prévu");
