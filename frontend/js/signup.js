@@ -31,14 +31,12 @@ function checkDataToSignUp() {
     const username = document.getElementById('username').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    const isAdmin = document.getElementById('isAdmin').checked;
 
     if (document.getElementById("signupForm").checkValidity()) {
         const signupToSubmit = {
             username: username,
             email: email,
             password: password,
-            isAdmin: isAdmin
         }
         submitSignup(signupToSubmit);
     } else {
