@@ -90,18 +90,6 @@ async function submitComment(commentToSubmit) {
     }
 }
 
-
-
-
-// Check if user rights to modify comment
-function getIfUserCanModifyComment(authorComment, userId, userPermission) {
-    if (authorComment == userId || userPermission == true) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
 // Get all comments for one message
 async function getAllComments() {
     const authentification = JSON.parse(localStorage.getItem("Auth"));
@@ -119,11 +107,7 @@ async function getAllComments() {
                 const newComment = new Comments(comment.id, comment.userId, comment.text);
                 newComment.initComment();
 
-
-                // Test if user rights and display the form
-                const userRights = getIfUserCanModifyComment(comment.userId, authentification.userId, authentification.isAdmin);
-
-                if (userRights == true) {
+                if (comment.userRights) {
                     const comment_body_modify = document.getElementById(`delete_comment_${comment.id}`);
                     comment_body_modify.classList.toggle('invisible');
                 }

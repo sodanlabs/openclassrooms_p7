@@ -73,15 +73,6 @@ function checkDataMessageToSubmitBeforeUpdate() {
     }
 }
 
-// Check if user rights to modify message
-function getIfUserCanModifyMessage(authorMessage, userId, userPermission) {
-    if (authorMessage == userId || userPermission == true) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
 // Show the Form in a modal window
 function toggleModalForm() {
     const modal = document.getElementById("modal");
@@ -120,10 +111,8 @@ async function getMessage() {
             removeDecoration(createCard.id);
 
             // Test if user rights and display the form
-            const userRights = getIfUserCanModifyMessage(messageData.userId, authentification.userId, authentification.isAdmin);
-
-            if (userRights == true) {
-
+            if (messageData.userRights) {
+                
                 const message_body_modify = document.getElementsByClassName('message_body_modify')[0];
                 message_body_modify.classList.toggle('invisible');
                 const modifyButton = document.getElementById('modify_button');
