@@ -15,11 +15,21 @@ exports.getAllComments = (req, res, next) => {
                 where: { messageId: `${messageFound.id}` },
                 attributes: ['id', 'userId', 'text']
             })
-                .then(comment => {
-                    if (comment.length == 0) {
+                .then(commentList => {
+
+                    if (commentList.length == 0) {
                         return res.status(400).json({ error: 'comment does not exist' })
                     } else {
-                        return res.status(200).json(comment);
+                        // Change CommentList <Array<Model>> to a simple Array
+                        const mapCommentList = commentList.map(commentItem => {
+                            return commentItem.dataValues;
+                        })
+                        mapCommentList.forEach(commentItem => {
+                            if (res.locals.userId == commentItem.userId || res.locals.isAdmin == true) {
+                                commentItem.userRights = true;
+                            }
+                        });
+                        return res.status(200).json(commentList);
                     }
                 })
                 .catch(error => res.status(400).json({ error: 'comment are not exist' }));

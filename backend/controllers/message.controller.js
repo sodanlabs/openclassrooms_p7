@@ -55,6 +55,10 @@ exports.getOneMessage = (req, res, next) => {
         attributes: ['id', 'userId', 'title', 'description', 'attachment']
     })
         .then(message => {
+            message = message.toJSON();
+            if (res.locals.userId == message.userId || res.locals.isAdmin == true) {
+                message.userRights = true;
+            }
             if (message == null) {
                 return res.status(400).json({ error: 'message does not exist' });
             } else {
@@ -96,7 +100,7 @@ exports.deleteMessage = (req, res, next) => {
         where: { id: `${req.params.id}` }
     })
         .then(messageFound => {
-            if (messageFound.userId == res.locals.userId || res.locals.isAdmin == 1) {
+            if (messageFound.userId == res.locals.userId || res.locals.isAdmin == true) {
                 // First, delete the comments associated with the message
                 Comment.destroy({
                     where: { messageId: `${messageFound.id}` }
